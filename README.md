@@ -39,15 +39,5 @@ The circuit was rigorously tested in **LTspice** across multiple domains:
 * **DC Operating Point Analysis:** Confirmed balanced differential current distribution and negligible DC offset voltage at the output node ($V_{out,DC} = 13.5\,\text{mV}$).
 * **Transient Analysis (`.tran`):** Evaluated sinusoidal signal integrity up to $16.7\,\text{V}_{pp}$ swing without clipping.
 * **Harmonic Distortion (`.four`):** Evaluated at $1\,\text{kHz}$ fundamental frequency under clean and noisy current mirror conditions.
-* **Real-World Audio Signal Test:** Validated system dynamic response using a single-channel $44.1\,\text{kHz}$ mono WAV file (`testtt.wav`), producing a clean, unclipped output recording (`output.wav`).
+* **Real-World Audio Signal Test:** Validated system dynamic response using a single-channel $44.1\,\text{kHz}$ mono WAV file (`testtt.wav`), producing a clean, unclipped output recording (`testtt1output.wav`).
 
----
-
-##  Repository Structure
-
-```text
-.
-├── project.asc         # Main LTspice circuit schematic & simulation directives
-├── testtt.wav          # Normalized mono audio input file (44.1 kHz)
-├── testtt1output.wav          # Processed audio output recorded from LTspice simulation
-└── README.md           # Technical documentation
