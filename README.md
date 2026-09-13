@@ -24,19 +24,19 @@ This project presents the complete design and performance evaluation of a high-f
 | **Component Cost Index** | $\le 200$ | **$157$** | Pass |
 
 ---
-1. **Differential Input Stage:** Active-loaded NMOS pair providing near-infinite input resistance ($R_{in} \approx \infty$) and high Common-Mode Rejection Ratio (CMRR)[cite: 1].
-2. **Voltage Amplification Stage (VAS):** BJT Common-Emitter amplifier biased by a stable current mirror to provide high open-loop voltage gain and sufficient drive swing[cite: 1].
-3. **Biasing & Thermal Stability:** $V_{BE}$-multiplier network ($Q_7, Q_{11}, R_8$) to mitigate crossover dead-zones and stabilize quiescent current ($I_Q$) against thermal drift[cite: 1].
-4. **Output Power Stage:** Complementary Class-AB Darlington topology ($Q_8/Q_9$ and $Q_{10}/Q_1$) designed to supply up to $160\,\text{mA}$ peak currents into a heavy $50\,\Omega$ load[cite: 1].
-5. **Global Negative Feedback:** Voltage-series topology sampling directly from the output node to stabilize gain, drastically reduce THD, and lower output impedance down to $15.2\,\text{m}\Omega$[cite: 1].
+1. **Differential Input Stage:** Active-loaded NMOS pair providing near-infinite input resistance ($R_{in} \approx \infty$) and high Common-Mode Rejection Ratio (CMRR)
+2. **Voltage Amplification Stage (VAS):** BJT Common-Emitter amplifier biased by a stable current mirror to provide high open-loop voltage gain and sufficient drive swing
+3. **Biasing & Thermal Stability:** $V_{BE}$-multiplier network ($Q_7, Q_{11}, R_8$) to mitigate crossover dead-zones and stabilize quiescent current ($I_Q$) against thermal drift
+4. **Output Power Stage:** Complementary Class-AB Darlington topology ($Q_8/Q_9$ and $Q_{10}/Q_1$) designed to supply up to $160\,\text{mA}$ peak currents into a heavy $50\,\Omega$ load
+5. **Global Negative Feedback:** Voltage-series topology sampling directly from the output node to stabilize gain, drastically reduce THD, and lower output impedance down to $15.2\,\text{m}\Omega$
 
 ---
 
 ##  Simulation & Testing Protocol
 
-The circuit was rigorously tested in **LTspice** across multiple domains[cite: 1]:
+The circuit was rigorously tested in **LTspice** across multiple domains:
 
-* **DC Operating Point Analysis:** Confirmed balanced differential current distribution and negligible DC offset voltage at the output node ($V_{out,DC} = 13.5\,\text{mV}$)[cite: 1].
-* **Transient Analysis (`.tran`):** Evaluated sinusoidal signal integrity up to $16.7\,\text{V}_{pp}$ swing without clipping[cite: 1].
-* **Harmonic Distortion (`.four`):** Evaluated at $1\,\text{kHz}$ fundamental frequency under clean and noisy current mirror conditions[cite: 1].
-* **Real-World Audio Signal Test:** Validated system dynamic response using a single-channel $44.1\,\text{kHz}$ mono WAV file (`testtt.wav`), producing a clean, unclipped output recording (`output.wav`)[cite: 1].
+* **DC Operating Point Analysis:** Confirmed balanced differential current distribution and negligible DC offset voltage at the output node ($V_{out,DC} = 13.5\,\text{mV}$).
+* **Transient Analysis (`.tran`):** Evaluated sinusoidal signal integrity up to $16.7\,\text{V}_{pp}$ swing without clipping.
+* **Harmonic Distortion (`.four`):** Evaluated at $1\,\text{kHz}$ fundamental frequency under clean and noisy current mirror conditions.
+* **Real-World Audio Signal Test:** Validated system dynamic response using a single-channel $44.1\,\text{kHz}$ mono WAV file (`testtt.wav`), producing a clean, unclipped output recording (`output.wav`).
