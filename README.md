@@ -1,13 +1,13 @@
-# ⚡ Multi-Stage Audio Power Amplifier with Global Negative Feedback
+#  Multi-Stage Audio Power Amplifier with Global Negative Feedback
 A fully customized, multi-stage discrete audio power amplifier engineered and simulated in **LTspice** to drive a low-impedance heavy load ($50\,\Omega$) with minimal crossover distortion, low total power dissipation, and stable closed-loop voltage gain.
 
 ---
 
-## 📌 Executive Summary & Key Highlights
+##  Executive Summary & Key Highlights
 
-This project presents the complete design, theoretical analysis, and performance evaluation of a high-fidelity discrete audio amplifier. The system incorporates a **MOSFET differential input stage**, a **BJT voltage amplification stage (VAS)** with tailored current biasing, a **Class-AB Darlington push-pull output stage**, and a **global voltage-series negative feedback loop**.
+This project presents the complete design and performance evaluation of a high-fidelity discrete audio amplifier. The system incorporates a **MOSFET differential input stage**, a **BJT voltage amplification stage (VAS)** with tailored current biasing, a **Class-AB Darlington push-pull output stage**, and a **global voltage-series negative feedback loop**.
 
-### 🏆 Key Benchmarks Achieved
+###  Key Benchmarks Achieved
 
 | Parameter | Required Target | Measured Design Result | Status |
 | :--- | :---: | :---: | :---: |
