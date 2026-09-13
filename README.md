@@ -24,20 +24,3 @@ This project presents the complete design, theoretical analysis, and performance
 | **Component Cost Index** | $\le 200$ | **$157$** | Pass |
 
 ---
-
-## 🏗️ System Architecture & Block Diagram
-
-The design topology is split into five functional building blocks:
-
-```text
-+---------------------------------------------------------------------------------+
-|                                                                                 |
-|  +--------------------+    +---------------+    +----------------------------+  |
-|  | NMOS Differential  |--->| BJT Common-   |--->| Class-AB Darlington Output |  |---> Load (50 Ω)
-|  | Input Stage        |    | Emitter (VAS) |    | Stage (VBE-Multiplier)     |  |
-|  +--------------------+    +---------------+    +----------------------------+  |
-|            ^                                                  |                 |
-|            |                                                  |                 |
-|            +-------- Global Voltage-Series Feedback ----------+                 |
-|                      (Rf = 190kΩ, Rg = 10kΩ)                                    |
-+---------------------------------------------------------------------------------+
