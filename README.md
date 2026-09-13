@@ -1,19 +1,43 @@
-# Multi-Stage Differential Audio Power Amplifier design
+# ⚡ Multi-Stage Audio Power Amplifier with Global Negative Feedback
+A fully customized, multi-stage discrete audio power amplifier engineered and simulated in **LTspice** to drive a low-impedance heavy load ($50\,\Omega$) with minimal crossover distortion, low total power dissipation, and stable closed-loop voltage gain.
 
-A fully discrete hybrid (CMOS + BJT) differential power amplifier designed and simulated in LTspice.
+---
 
-## Key Specifications
-- **Supply Voltage:** ±10V
-- **Power Dissipation:** < 150mW (Quiescent Power ~ 60mW)
-- **Load Impedance:** 50 Ω
-- **Architecture:** NMOS Differential Input Stage, BJT Gain/Driver Stage, Class-AB Push-Pull Output Stage.
+## 📌 Executive Summary & Key Highlights
 
-## Circuit Architecture
-- **Input Stage:** Active-loaded NMOS differential pair for high input impedance ($R_{in} \approx \infty$).
-- **Intermediate Stage:** BJT Common-Emitter gain stage with tailored current mirror biasing to optimize swing headroom and prevent negative cycle clipping.
-- **Output Stage:** Push-Pull Class-AB configuration driving a heavy 50Ω load with minimal crossover distortion.
+This project presents the complete design, theoretical analysis, and performance evaluation of a high-fidelity discrete audio amplifier. The system incorporates a **MOSFET differential input stage**, a **BJT voltage amplification stage (VAS)** with tailored current biasing, a **Class-AB Darlington push-pull output stage**, and a **global voltage-series negative feedback loop**.
 
-## How to Run
-1. Clone this repository.
-2. Open `project.asc` in LTspice.
-3. Run `.tran 0 10m 0` to observe transient signal integrity.
+### 🏆 Key Benchmarks Achieved
+
+| Parameter | Required Target | Measured Design Result | Status |
+| :--- | :---: | :---: | :---: |
+| **Supply Voltage ($V_{CC} / V_{EE}$)** | $\pm 10\,\text{V}$ | **$\pm 10\,\text{V}$** | Pass |
+| **Closed-Loop Gain ($A_{v,\text{closed}}$)** | $18 \text{ to } 22 \text{ (at } 1\,\text{kHz})$ | **$19.65$ ($25.87\,\text{dB}$)** | Pass |
+| **Clean Output Swing ($V_{out,pp}$)** | $\ge 16\,\text{V}_{pp}$ | **$16.7\,\text{V}_{pp}$** | Pass |
+| **Quiescent Power Dissipation** | Optimized | **$\sim 60\,\text{mW}$** | Pass |
+| **Total Power ($P_{\text{total}}$ @ $50\,\text{mV}_{in}$)** | $\le 190\,\text{mW}$ | **$74.83\,\text{mW}$** | Pass |
+| **Output Stage Efficiency ($\eta_{\text{out}}$ @ $16\,\text{V}_{pp}$)** | $> 60\%$ | **$66.89\%$** | Pass |
+| **Total Harmonic Distortion (THD)** | $< 0.08\%$ | **$0.0637\%$** | Pass |
+| **THD with Noise Source** | $< 1.00\%$ | **$0.0640\%$** | Pass |
+| **Differential Input Impedance ($R_{in,\text{diff}}$)** | $> 1\,\text{M}\Omega$ | **$\infty$** (MOSFET inputs) | Pass |
+| **Output Impedance ($R_{\text{out}}$)** | $< 50\,\Omega$ | **$15.2\,\text{m}\Omega$** | Pass |
+| **Component Cost Index** | $\le 200$ | **$157$** | Pass |
+
+---
+
+## 🏗️ System Architecture & Block Diagram
+
+The design topology is split into five functional building blocks:
+
+```text
++---------------------------------------------------------------------------------+
+|                                                                                 |
+|  +--------------------+    +---------------+    +----------------------------+  |
+|  | NMOS Differential  |--->| BJT Common-   |--->| Class-AB Darlington Output |  |---> Load (50 Ω)
+|  | Input Stage        |    | Emitter (VAS) |    | Stage (VBE-Multiplier)     |  |
+|  +--------------------+    +---------------+    +----------------------------+  |
+|            ^                                                  |                 |
+|            |                                                  |                 |
+|            +-------- Global Voltage-Series Feedback ----------+                 |
+|                      (Rf = 190kΩ, Rg = 10kΩ)                                    |
++---------------------------------------------------------------------------------+
